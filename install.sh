@@ -45,7 +45,7 @@ echo -e "Install epel-release"
 yum install epel-release -y
 
 echo -e "${GREEN}Check to see if required programs are installed.${ENDCOLOR}"
-yum install open-vm-tools firewalld wget named -y 
+yum install open-vm-tools firewalld wget named geoip geoipupdate -y 
 
 echo -e "${GREEN}Turning on the Firewall${ENDCOLOR}"
 systemctl enable firewalld
@@ -67,3 +67,6 @@ setenforce 0
 
 echo -e "${GREEN}Setting Permissive SELINUX value.\n${ENDCOLOR}"
 sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
+
+
+

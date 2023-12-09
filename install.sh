@@ -2,7 +2,9 @@
 #EricServic.es DNS Server
 
 ##### Variables ###############################
-# DOMAIN - Email Domain
+# DOMAIN
+# GEOIPACCT - GeoIP Account Number
+# GEOIPKEY - GeoIP Key
 ###############################################
 
 #################
@@ -27,10 +29,17 @@ echo -e "${BLUE}|______|_|  |_|\___|_____/ \___|_|    \_/ |_|\___(_)___||___/ \n
 #####################
 echo -e "${GREEN}Set Variables for custom install.${ENDCOLOR}"
 
-read -p "Set DOMAIN [ericservic.es]:" DOMAIN
-DOMAIN="${DOMAIN:=ericservic.es}"
+read -p "Set DOMAIN [ericcdn.com]:" DOMAIN
+DOMAIN="${DOMAIN:=ericcdn.com}"
 echo "$DOMAIN"
 
+read -p "Set GeoIP Account Number [0]:" GEOIPACCT
+GEOIPACCT="${GEOIPACCT:=0}"
+echo "$GEOIPACCT"
+
+read -p "Set GeoIP Key [0000000000]:" GEOIPKEY
+GEOIPKEY="${GEOIPKEY:=00000000}"
+echo "$GEOIPKEY"
 
 ################################
 # Updates + Install + Firewall #
@@ -59,6 +68,8 @@ firewall-cmd --reload
 
 echo -e "${GREEN}Ports allowed on firewall.\n${ENDCOLOR}"
 firewall-cmd --list-all
+
+
 
 # Permissive Mode #
 ###################

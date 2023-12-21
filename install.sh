@@ -364,7 +364,308 @@ logging {
 //
         category query-errors {query-errors_log; };
 };
+
+acl "alabama" {
+        geoip country US;
+        geoip region AL;
+};
+acl "alaska" {
+        geoip country US;
+        geoip region AK;
+};
+acl "arizona" {
+        geoip country US;
+        geoip region AZ;
+};
+acl "arkansas" {
+        geoip country US;
+        geoip region AR;
+};
+acl "california" {
+        geoip country US;
+        geoip region CA;
+};
+acl "colorado" {
+        geoip country US;
+        geoip region CO;
+};
+acl "connecticut" {
+        geoip country US;
+        geoip region CT;
+};
+acl "US-dc" {
+        geoip country US;
+        geoip region DC;
+};
+acl "delaware" {
+        geoip country US;
+        geoip region DE;
+};
+acl "florida" {
+        geoip country US;
+        geoip region FL;
+};
+acl "georgia" {
+        geoip country US;
+        geoip region GA;
+};
+acl "hawaii" {
+        geoip country US;
+        geoip region HI;
+};
+acl "iowa" {
+        geoip country US;
+        geoip region IA;
+};
+acl "idaho" {
+        geoip country US;
+        geoip region ID;
+};
+acl "illinois" {
+        geoip country US;
+        geoip region IL;
+};
+acl "indiana" {
+        geoip country US;
+        geoip region IN;
+};
+acl "kansas" {
+        geoip country US;
+        geoip region KS;
+};
+acl "kentucky" {
+        geoip country US;
+        geoip region AL;
+};
+acl "louisiana" {
+        geoip country US;
+        geoip region LA;
+};
+acl "massachusetts" {
+        geoip country US;
+        geoip region MA;
+};
+acl "maryland" {
+        geoip country US;
+        geoip region MD;
+};
+acl "maine" {
+        geoip country US;
+        geoip region ME;
+};
+acl "michigan" {
+        geoip country US;
+        geoip region MI;
+};
+acl "minnesota" {
+        geoip country US;
+        geoip region MN;
+};
+acl "missouri" {
+        geoip country US;
+        geoip region MO;
+};
+acl "mississippi" {
+        geoip country US;
+        geoip region MS;
+};
+acl "montana" {
+        geoip country US;
+        geoip region MT;
+};
+acl "northcarolina" {
+        geoip country US;
+        geoip region NC;
+};
+acl "northdakota" {
+        geoip country US;
+        geoip region ND;
+};
+acl "nebraska" {
+        geoip country US;
+        geoip region NE;
+};
+acl "newhampshire" {
+        geoip country US;
+        geoip region NH;
+};
+acl "newjersey" {
+        geoip country US;
+        geoip region NJ;
+};
+acl "newmexico" {
+        geoip country US;
+        geoip region NM;
+};
+acl "nevada" {
+        geoip country US;
+        geoip region NV;
+};
+acl "newyork" {
+        geoip country US;
+        geoip region NY;
+};
+acl "ohio" {
+        geoip country US;
+        geoip region OH;
+};
+acl "oklahoma" {
+        geoip country US;
+        geoip region OK;
+};
+acl "oregon" {
+        geoip country US;
+        geoip region OR;
+};
+acl "pennsylvania" {
+        geoip country US;
+        geoip region PA;
+};
+acl "rhodeisland" {
+        geoip country US;
+        geoip region RI;
+};
+acl "southcarolina" {
+        geoip country US;
+        geoip region SC;
+};
+acl "southdakota" {
+        geoip country US;
+        geoip region SD;
+};
+acl "tennessee" {
+        geoip country US;
+        geoip region TN;
+};
+acl "texas" {
+        geoip country US;
+        geoip region TX;
+};
+acl "utah" {
+        geoip country US;
+        geoip region UT;
+};
+acl "virginia" {
+        geoip country US;
+        geoip region VA;
+};
+acl "vermont" {
+        geoip country US;
+        geoip region VT;
+};
+acl "washington" {
+        geoip country US;
+        geoip region WA;
+};
+acl "wisconsin" {
+        geoip country US;
+        geoip region WI;
+};
+acl "westvirginia" {
+        geoip country US;
+        geoip region WV;
+};
+acl "wyoming" {
+        geoip country US;
+        geoip region WY;
+};
+
+acl "us" {
+        geoip country US;
+};
+
+acl "australia" {
+        geoip country AU;
+};
+
+acl "canada" {
+        geoip country CA;
+};
+
+acl "china" {
+        geoip country CN;
+};
+
+acl "hongkong" {
+        geoip country HK;
+};
+
+acl "japan" {
+        geoip country JP;
+};
+
+acl "mexico" {
+        geoip country MX;
+};
+
+acl "netherlands" {
+        geoip country NL;
+};
+
+acl "russia" {
+        geoip country RU;
+};
+
+acl "singapore" {
+        geoip country SG;
+};
+
+acl "uk" {
+        geoip country GB;
+};
+
+view "AMER-EAST" {
+      match-clients { alabama; arkansas; connecticut; US-dc; delaware; florida; georgia; iowa; illinois; indiana; kentucky; louisiana; massachusetts; maryland; maine; michigan; minnesota; missouri; mississippi; northcarolina; newhampshire; newjersey; newyork; ohio; pennsylvania; rhodeisland; southcarolina; tennessee; virginia; vermont; wisconsin; westvirginia; canada; us; };
+      zone "$DOMAIN" {
+              type master;
+              file "/var/named/AMER-EAST/$DOMAIN.zone";
+              allow-update { none; };
+              allow-transfer { SECONDARYIPADDR; };
+              notify yes;
+      };
+};
+
+view "AMER-WEST" {
+      match-clients { alaska; arizona; california; colorado; hawaii; idaho; kansas; montana; northdakota; newmexico; nevada; oklahoma; oregon; southdakota; texas; utah; washington; wyoming; mexico; };
+      zone "$DOMAIN" {
+              type master;
+              file "/var/named/AMER-WEST/$DOMAIN.zone";
+              allow-update { none; };
+              allow-transfer { SECONDARYIPADDR; };
+              notify yes;
+      };
+};
+
+view "EMEA" {
+      match-clients { netherlands; russia; uk; };
+      zone "$DOMAIN" {
+              type master;
+              file "/var/named/EMEA/$DOMAIN.zone";
+              allow-update { none; };
+              allow-transfer { SECONDARYIPADDR; };
+              notify yes;
+      };
+};
+
+view "APAC" {
+      match-clients { australia; china; hongkong; japan; singapore; };
+      zone "$DOMAIN" {
+              type master;
+              file "/var/named/APAC/$DOMAIN.zone";
+              allow-update { none; };
+              allow-transfer { SECONDARYIPADDR; };
+              notify yes;
+      };
+};
+
+view "default" {
+        zone "ericcdn.com" {
+              type master;
+              file "/var/named/$DOMAIN.zone";
+              allow-update { none; };
+              allow-transfer { SECONDARYIPADDR; };
+              notify yes;
+        };
+};
+include "/etc/named.root.key";
 EOF
-
-
-

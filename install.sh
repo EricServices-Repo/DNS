@@ -61,7 +61,7 @@ systemctl enable firewalld
 systemctl restart firewalld
 
 echo -e "${GREEN}Allow Ports for Email Server on Firewall\n${ENDCOLOR}"
-firewall-cmd --permanent --add-port={53/udp}
+firewall-cmd --permanent --add-port={53/udp,53/tcp}
 
 echo -e "${GREEN}Reload the firewall.\n${ENDCOLOR}"
 firewall-cmd --reload
@@ -70,17 +70,25 @@ echo -e "${GREEN}Ports allowed on firewall.\n${ENDCOLOR}"
 firewall-cmd --list-all
 
 
-
+###################
 # Permissive Mode #
 ###################
-echo -e "${GREEN}Setting to Permissive Mode for install\n${ENDCOLOR}"
+echo -e "${GREEN}Setting to Permissive Mode for install${ENDCOLOR}"
 setenforce 0
 
-echo -e "${GREEN}Setting Permissive SELINUX value.\n${ENDCOLOR}"
+echo -e "${GREEN}Setting Permissive SELINUX value${ENDCOLOR}"
 sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
 
 
+###########################
+# Configure Named Service #
+###########################
+
+echo -e "${GREEN}Configure Named Service${ENDCOLOR}"
+mv /etc/named.conf /etc/named.conf.old
+
+cat << EOF >> /etc/named.conf
 //
 // named.conf
 //
@@ -356,5 +364,7 @@ logging {
 //
         category query-errors {query-errors_log; };
 };
+EOF
+
 
 

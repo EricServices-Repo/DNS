@@ -22,9 +22,9 @@ Configure Domain registrar to point to DNS Server
     ./install.sh  
 
 # Variables  
-DOMAIN - Authoritative DNS Domain
-GEOIPACCT - MaxMind Account
-GEOIPKEY - MaxMind API Key
+DOMAIN - Authoritative DNS Domain  
+GEOIPACCT - MaxMind Account  
+GEOIPKEY - MaxMind API Key  
 
 # Post Installation  
 # Access  

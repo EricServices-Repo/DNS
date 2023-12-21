@@ -2,7 +2,7 @@
 #EricServic.es DNS Server
 
 ##### Variables ###############################
-# DOMAIN
+# DOMAIN - Authoritative Domain
 # GEOIPACCT - GeoIP Account Number
 # GEOIPKEY - GeoIP Key
 ###############################################

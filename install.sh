@@ -5,6 +5,7 @@
 # DOMAIN - Authoritative Domain
 # GEOIPACCT - GeoIP Account Number
 # GEOIPKEY - GeoIP Key
+# 
 ###############################################
 
 #################
@@ -40,6 +41,10 @@ echo "$GEOIPACCT"
 read -p "Set GeoIP Key [0000000000]:" GEOIPKEY
 GEOIPKEY="${GEOIPKEY:=00000000}"
 echo "$GEOIPKEY"
+
+read -p "Is this the Primary Nameserver [Y/n]:" PRIMARYNS
+PRIMARYNS="${PRIMARYNS:=Y}"
+echo "$PRIMARYNS"
 
 ################################
 # Updates + Install + Firewall #

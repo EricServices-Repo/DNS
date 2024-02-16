@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #EricServic.es DNS Server
 
-##### Variables ###############################
+##### Variables ######################################
 # DOMAIN - Authoritative Domain
 # GEOIPACCT - GeoIP Account Number
 # GEOIPKEY - GeoIP Key
-# 
-###############################################
+# IPADDR - Nameserver IP Address
+# SECONDARYIPADDR - Secondary Nameserver IP Address
+######################################################
 
 #################
 # Define Colors #

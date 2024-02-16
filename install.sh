@@ -101,24 +101,46 @@ sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
 echo -e "${GREEN}Configure Named Service${ENDCOLOR}"
 
-echo -e "Check to see if nginx.conf.old file exists already.\n"
+echo -e "Check to see if named.conf.old file exists already.\n"
 NAMEDOLD_FILE=/etc/named.conf.old
 if test -f "$NAMEDOLD_FILE"; then
     echo -e "$NAMEDOLD_FILE already exists, need to delete.\n"
     rm /etc/named.conf.old
 fi
 
-echo -e "Check to see if nginx.conf file exists already.\n"
+echo -e "Check to see if named.conf file exists already.\n"
 NAMED_FILE=/etc/named.conf
 if test -f "$NAMED_FILE"; then
     echo -e "$NAMED_FILE already exists, needs to be moved.\n"
     mv /etc/named.conf /etc/named.conf.old
 fi
 
-echo -e "Make sure no nginx.conf file exists now, and download it.\n"
+echo -e "Make sure no named.conf file exists now, and download it.\n"
 if [ ! -f "$NAMED_FILE" ]
 then
 curl -o /etc/named.conf https://raw.githubusercontent.com/EricServices-Repo/DNS/main/config/named.conf
 fi
 
 sed -i 's/IPADDR/$IPADDR/' /etc/named.conf
+
+####
+
+echo -e "Check to see if AMER-EAST/ericcdn.com.zone.old file exists already.\n"
+AMEREASTOLD_FILE=/var/named/AMER-EAST/ericcdn.com.zone.old
+if test -f "$AMEREASTOLD_FILE"; then
+    echo -e "$AMEREASTOLD_FILE already exists, need to delete.\n"
+    rm /var/named/AMER-EAST/ericcdn.com.zone.old
+fi
+
+echo -e "Check to see if AMER-EAST/ericcdn.com.zone file exists already.\n"
+AMEREAST_FILE=/var/named/AMER-EAST/ericcdn.com.zone
+if test -f "$AMEREAST_FILE"; then
+    echo -e "$AMEREAST_FILE already exists, needs to be moved.\n"
+    mv /var/named/AMER-EAST/ericcdn.com.zone /var/named/AMER-EAST/ericcdn.com.zone.old
+fi
+
+echo -e "Make sure no named.conf file exists now, and download it.\n"
+if [ ! -f "$AMEREAST_FILE" ]
+then
+curl -o /var/named/AMER-EAST/ericcdn.com.zone https://raw.githubusercontent.com/EricServices-Repo/DNS/main/config/AMER-eastern/ericcdn.com.conf
+fi

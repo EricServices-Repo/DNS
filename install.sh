@@ -47,6 +47,14 @@ read -p "Is this the Primary Nameserver [Y/n]:" PRIMARYNS
 PRIMARYNS="${PRIMARYNS:=Y}"
 echo "$PRIMARYNS"
 
+read -p "Nameserver IP Address [192.168.1.1]:" IPADDR
+IPADDR="${IPADDR:=192.168.1.1}"
+echo "$IPADDR"
+
+read -p "Secondary Nameserver IP Address [192.168.1.1]:" SECONDARYIPADDR
+SECONDARYIPADDR="${SECONDARYIPADDR:=192.168.1.2}"
+echo "$SECONDARYIPADDR"
+
 ################################
 # Updates + Install + Firewall #
 ################################
